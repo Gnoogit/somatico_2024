@@ -1,5 +1,5 @@
 # diretorio
-cd my_samples/
+cd somatico_2024/my_samples/
 
 ## variaveis de ambiente
 CHAIN="hg19ToHg38.over.chain"
