@@ -75,7 +75,7 @@ udocker --allow-root pull ensemblorg/ensembl-vep
 
 A filtragem das variáveis é executada no script vep-gc.sh. O arquivo Myelofibrosis.txt possui uma lista dos genes de interesse. Para mais informações sobre o script, favor consultar o script completo no repositório.
 
-(Neste workflow, foram utilizadas as amostras do projeto LMA Brasil. Os arquivos VCF do projeto foram convertido da versão do genoma hg19 para hg38 utilizando o programa gatk LiftoverVcf com as posições hg19ToHg38.over.chain da UCSC.)
+(Neste workflow, foram utilizadas as amostras do projeto LMA Brasil. Os arquivos VCF do projeto foram convertidos previamente da versão do genoma hg19 para hg38 utilizando o programa gatk LiftoverVcf com as posições hg19ToHg38.over.chain da UCSC.)
 
 ```
 %%bash
@@ -129,3 +129,5 @@ df_merged_chr_chart.plot.pie(y='SYMBOL', figsize=(5, 5), autopct='%1.1f%%', star
 # 5. Conclusão
 
 Assim, de acordo com as informações obtidas através do nosso workflow, podemos demonstrar que dentre as amostras analisadas, apenas 22 das 30 amostras possuem variantes nos genes de interesse, com a maior parte das variantes presentes nos genes JAK2 e CALR.
+
+---
