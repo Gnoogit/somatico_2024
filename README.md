@@ -158,3 +158,9 @@ df_merged_clin_chart[( df_merged_clin_chart['Pathogenic'] != 0 ) | ( df_merged_c
 ## 5. Conclusão
 
 Podemos concluir que, apesar do baixo número de variantes encontradas, nossa análise está de acordo com a literatura pois demonstra alterações patogênicas nos genes KRAS, NRAS e TP53 e provavelmente patogênicas no gene U2AF1.
+
+![chart_1](https://github.com/Gnoogit/somatico_2024/blob/main/chart1.png)
+
+![chart_2](https://github.com/Gnoogit/somatico_2024/blob/main/chart2.png)
+
+![chart_3](https://github.com/Gnoogit/somatico_2024/blob/main/chart3.png)
