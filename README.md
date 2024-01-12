@@ -1,10 +1,8 @@
----
+# Identificação de Variantes de Mielofibrose
 
-## Identificação de Variantes de Mielofibrose
+(Todos os arquivos estão disponíveis em https://github.com/Gnoogit/somatico_2024.git.)
 
-(Todos os arquivos estão disponíveis em https://github.com/clarasgusmao/somatico_2024.git.)
-
-# Alunos responsáveis
+## Alunos responsáveis
 - Caio Elias
 - Clara Gusmão
 - Gabriel Oliveira
@@ -12,7 +10,6 @@
 - José Filho
 - Kaira Tomaz
 
----
 # Workflow
 
 1. Clonagem do repositório do projeto
@@ -26,7 +23,7 @@ Com o comando git clone, podemos importar todos os arquivos de uma única vez. O
 
 ```
 %%bash
-git clone https://github.com/clarasgusmao/somatico_2024.git
+git clone https://github.com/Gnoogit/somatico_2024.git
 ```
 
 ## 2. Instalação dos recursos necessários
@@ -129,5 +126,3 @@ df_merged_chr_chart.plot.pie(y='SYMBOL', figsize=(5, 5), autopct='%1.1f%%', star
 # 5. Conclusão
 
 Assim, de acordo com as informações obtidas através do nosso workflow, podemos demonstrar que dentre as amostras analisadas, apenas 22 das 30 amostras possuem variantes nos genes de interesse, com a maior parte das variantes presentes nos genes JAK2 e CALR.
-
----
