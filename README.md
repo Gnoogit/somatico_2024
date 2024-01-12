@@ -116,7 +116,7 @@ df_merged_sample_chart = df_merged.value_counts("Sample")
 df_merged_sample_chart.plot.bar(x='Sample')
 ```
 
-c) E também, é possível gerar um gráfico que mostra a distribuição das variantes de interesse por gene. Alguns genes não aparecem no gráfico pois não foram encontradas amostras com as variantes de interesse nos mesmos dentre as amostras analisadas.
+c) E também, é possível gerar um gráfico que mostra a distribuição das variantes de interesse por gene. Alguns genes não aparecem no gráfico pois não foram encontradas variantes de interesse nos mesmos dentre as amostras analisadas.
 
 ```
 df_merged_chr_chart = df_merged.value_counts("SYMBOL")
