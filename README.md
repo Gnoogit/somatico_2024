@@ -125,6 +125,36 @@ df_merged_chr_chart = df_merged.value_counts("SYMBOL")
 df_merged_chr_chart.plot.pie(y='SYMBOL', figsize=(5, 5), autopct='%1.1f%%', startangle=90)
 ```
 
+d) Com um pouco de manipulação em nossa tabela, conseguimos gerar um gráfico que relaciona a patogenicidade das variantes de acordo com os genes estudados. Alguns genes não aparecem no gráfico pois não foram encontradas variantes de interesse nos mesmos, dentre as amostras analisadas.
+
+Dos genes em questão, encontramos anotações de patogenicidade para os genes KRAS, NRAS e TP53.
+
+```
+clin_sig_split = pd.DataFrame()
+clin_sig_split_and = pd.DataFrame()
+clin_sig_split_or = pd.DataFrame()
+
+clin_sig_split_and = df_merged['CLIN_SIG'].str.split('&',expand=True)
+for col1 in clin_sig_split_and:
+  if clin_sig_split_and[col1].str.contains('/').any():
+    clin_sig_split_or = clin_sig_split_and[col1].str.split('/',expand=True)
+    for col2 in clin_sig_split_or:
+      clin_sig_split['CLIN_SIG_'+str(len(clin_sig_split_and.columns)+col2+1)] = clin_sig_split_or[col2]
+  else:
+    clin_sig_split['CLIN_SIG_'+str(col1)] = clin_sig_split_and[col1]
+
+clin_sig_split_pathogenic = clin_sig_split.where(clin_sig_split=='pathogenic')
+clin_sig_split_likely_pathogenic = clin_sig_split.where(clin_sig_split=='likely_pathogenic')
+
+df_merged_clin_chart = pd.DataFrame()
+df_merged_clin_chart['SYMBOL'] = df_merged['SYMBOL']
+df_merged_clin_chart['Pathogenic'] = clin_sig_split_pathogenic[clin_sig_split_pathogenic.columns[0:]].apply(lambda x: int(bool(''.join(x.dropna().astype(str)))),axis=1)
+df_merged_clin_chart['Likely Pathogenic'] = clin_sig_split_likely_pathogenic[clin_sig_split_likely_pathogenic.columns[0:]].apply(lambda x: int(bool(''.join(x.dropna().astype(str)))),axis=1)
+df_merged_clin_chart['Likely Pathogenic'] = df_merged_clin_chart['Likely Pathogenic'] - ( df_merged_clin_chart['Pathogenic'] * df_merged_clin_chart['Likely Pathogenic'] )
+
+df_merged_clin_chart[( df_merged_clin_chart['Pathogenic'] != 0 ) | ( df_merged_clin_chart['Likely Pathogenic'] != 0 )].groupby('SYMBOL').sum().plot.bar(stacked=True, title='Pathogenicity of variants per gene')
+```
+
 ## 5. Conclusão
 
-Assim, de acordo com as informações obtidas através do nosso workflow, podemos demonstrar que dentre as amostras analisadas, apenas 22 das 30 amostras possuem variantes nos genes de interesse, com a maior parte das variantes presentes nos genes JAK2 e CALR.
+Podemos concluir que, apesar do baixo número de variantes encontradas, nossa análise está de acordo com a literatura pois demonstra alterações patogênicas nos genes KRAS, NRAS e TP53 e provavelmente patogênicas no gene U2AF1.
